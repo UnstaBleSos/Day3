@@ -1,0 +1,41 @@
+<!-- <p class="text-lg font-semibold text-gray-700 mx-auto flex justify-center m-3">User Form</p>
+
+<div class="flex flex-col bg-gray-200 p-4 rounded-lg shadow-md w-80 justify-center items-center mx-auto">
+    <label for="username" class="mb-1 font-medium">Username</label>
+    <input type="text" id="username" [(ngModel)]="username" class="border-2 border-black p-2 rounded-md mb-2">
+
+    <label for="password" class="mb-1 font-medium">Password</label>
+    <input type="password" id="password" [(ngModel)]="password" class="border-2 border-black p-2 rounded-md mb-2">
+
+    <label for="repassword" class="mb-1 font-medium">Re-enter Password</label>
+    <input type="password" id="repassword" [(ngModel)]="repassword" class="border-2 border-black p-2 rounded-md mb-4">
+
+    <button type="submit" class="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+        Submit
+    </button>
+</div>
+ -->
+
+
+ <h1 class="flex text-xl "> Reactive Forms</h1>
+ <form [formGroup]="profile" class="flex flex-col gap-2 m-2 p-2 justify-center max-w-60 mx-auto" (ngSubmit)="handleLogin()">
+    <label >
+        Name
+        <input type="text" formControlName="name" class="border-black border-2 rounded-sm p-1">
+    </label>
+    <span *ngIf="profile.controls.name.invalid && profile.controls.name.touched" class="text-red-500 text-sm">
+        Name is required
+    </span>
+    <label >
+        Email
+        <input type="text" formControlName="email" class="border-black border-2 rounded-sm p-1">
+        <span *ngIf="profile.controls.email.invalid && profile.controls.email.touched" class="text-red-500 text-sm">
+            Email  is required
+        </span>
+    </label>
+    <label >
+        Password
+        <input type="password" formControlName="password" class="border-black border-2 rounded-sm p-1">
+    </label>
+    <button class=" border-black border-1 w-20 rounded-sm mx-auto" [disabled]="profile.invalid">Submit</button>
+ </form>
