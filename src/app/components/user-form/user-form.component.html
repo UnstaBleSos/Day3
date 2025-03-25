@@ -37,5 +37,13 @@
         Password
         <input type="password" formControlName="password" class="border-black border-2 rounded-sm p-1">
     </label>
-    <button class=" border-black border-1 w-20 rounded-sm mx-auto" [disabled]="profile.invalid">Submit</button>
- </form>
+    <span *ngIf="profile.controls.password.invalid && profile.controls.password.touched ">
+        <span *ngIf="profile.controls.password.errors?.['required']" class="text-red-300">Password is required.</span>
+        <span *ngIf="profile.controls.password.errors?.['minlength']" class="text-red-300">Minimum 8 password length</span>
+    </span>
+    <button type="submit" 
+        class="cursor-pointer border-black border-2 w-20 rounded-sm mx-auto bg-blue-500 text-white p-1 disabled:opacity-50 disabled:cursor-not-allowed"
+        [disabled]="profile.invalid">
+        Submit
+    </button>
+</form>
